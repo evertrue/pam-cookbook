@@ -1,0 +1,13 @@
+<% 
+  @conf_lines.each do |_conf_item_name, conf_line|
+    unless conf_line['disabled']
+-%>
+<%= conf_line['interface'] %> <%= conf_line['control_flag'] %> <%= conf_line['name'] %> <%= conf_line['args'] || nil %>
+<%
+    end
+  end
+-%>
+
+<% @includes.each do |include_service| -%>
+@include <%= include_service %>
+<% end -%>

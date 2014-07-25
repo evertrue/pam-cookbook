@@ -1,33 +1,44 @@
 # pam-cookbook
 
-TODO: Enter the cookbook description here.
+Manages PAM services in /etc/pam.d
+
+## Limitations
+
+This cookbook will not set up PAM if you do not already have it installed.  It will only modify an existing configuration.
+
+Also, currently it only includes defaults for /etc/pam.d/su.  If you want to override any other PAM services, you will first need to transcribe the entire service configuration into the appropriate node attibute, otherwise the PAM file will be overwritten *with only the attributes you configure* (and your system will become unusable).
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+This cookbook _should_ work fine on Red Hat systems, however it has only been tested on *Ubuntu 12.04*.
 
 ## Attributes
+- `node['pam_d']['services']` - Example:
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['pam']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+  ```json
+  'su' => {
+    'main' => {
+      'pam_env' => {
+        'interface' => 'session',
+        'control_flag' => 'required',
+        'name' => 'pam_env.so',
+        'args' => 'readenv=1',
+        'disabled' => false
+      }
+    },
+    'includes' => %w(
+      common-something
+    )
+  }
+  ```
+
+*NOTE:* `pam_env` in this case is just a placeholder so that we can use a keyed hash instead of an array.  `disabled` is optional but if it is present and set to true, it will prevent the entry from showing up in the PAM service file.
 
 ## Usage
 
 ### pam::default
 
-Include `pam` in your node's `run_list`:
+Include `pam` in a recipe:
 
 ```json
 {

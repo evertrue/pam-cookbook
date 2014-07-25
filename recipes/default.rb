@@ -16,3 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+Chef::Log.info "Services: #{node['pam_d'].inspect}"
+
+node['pam_d']['services'].each do |service, conf|
+  template "/etc/pam.d/#{service}" do
+    source 'service.erb'
+    owner  'root'
+    group  'root'
+    mode   0644
+    variables(
+      conf_lines: conf['main'],
+      includes: conf['includes']
+    )
+  end
+end

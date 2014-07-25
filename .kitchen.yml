@@ -7,9 +7,22 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.4
+    driver_config:
+      customize:
+        cpus: 4
+        memory: 1536
+  # - name: centos-6.4
 
 suites:
   - name: default
-    run_list:
+    run_list: [
+      'recipe[pam_test::default]'
+    ]
     attributes:
+      # pam_d:
+      #   services:
+      #     su:
+      #       main:
+      #       - interface: 'session'
+      #         control_flag: 'optional'
+      #         name: 'pam_limits.so'
