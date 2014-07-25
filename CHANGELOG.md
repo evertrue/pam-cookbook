@@ -1,3 +1,7 @@
+# 1.0.1
+
+* First public release
+
 # 0.1.0
 
 Initial release of pam
