@@ -42,12 +42,8 @@ This cookbook _should_ work fine on Red Hat systems, however it has only been te
 
 Include `pam` in a recipe:
 
-```json
-{
-  "run_list": [
-    "recipe[pam::default]"
-  ]
-}
+```ruby
+include_recipe 'pam'
 ```
 
 ## Contributing
