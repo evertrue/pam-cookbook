@@ -16,19 +16,21 @@ This cookbook _should_ work fine on Red Hat systems, however it has only been te
 - `node['pam_d']['services']` - Example:
 
   ```json
-  'su' => {
-    'main' => {
-      'pam_env' => {
-        'interface' => 'session',
-        'control_flag' => 'required',
-        'name' => 'pam_env.so',
-        'args' => 'readenv=1',
-        'disabled' => false
-      }
-    },
-    'includes' => %w(
-      common-something
-    )
+  {
+    'su' => {
+      'main' => {
+        'pam_env' => {
+          'interface' => 'session',
+          'control_flag' => 'required',
+          'name' => 'pam_env.so',
+          'args' => 'readenv=1',
+          'disabled' => false
+        }
+      },
+      'includes' => %w(
+        common-something
+      )
+    }
   }
   ```
 
