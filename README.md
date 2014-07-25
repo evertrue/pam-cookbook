@@ -15,7 +15,7 @@ This cookbook _should_ work fine on Red Hat systems, however it has only been te
 ## Attributes
 - `node['pam_d']['services']` - Example:
 
-  ```json
+  ```ruby
   {
     'su' => {
       'main' => {
