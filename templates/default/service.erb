@@ -1,4 +1,4 @@
-<% 
+<%
   @conf_lines.each do |_conf_item_name, conf_line|
     unless conf_line['disabled']
 -%>
@@ -7,7 +7,8 @@
     end
   end
 -%>
-
+<% if @includes %>
 <% @includes.each do |include_service| -%>
 @include <%= include_service %>
 <% end -%>
+<% end %>
