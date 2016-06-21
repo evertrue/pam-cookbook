@@ -1,28 +1,17 @@
 ---
 driver:
   name: vagrant
+  customize:
+    cpus: 4
+    memory: 1536
 
 provisioner:
   name: chef_solo
 
 platforms:
   - name: ubuntu-12.04
-    driver_config:
-      customize:
-        cpus: 4
-        memory: 1536
-  # - name: centos-6.4
 
 suites:
   - name: default
-    run_list: [
-      'recipe[pam_test::default]'
-    ]
-    attributes:
-      # pam_d:
-      #   services:
-      #     su:
-      #       main:
-      #       - interface: 'session'
-      #         control_flag: 'optional'
-      #         name: 'pam_limits.so'
+    run_list:
+      - recipe[pam_test::default]
