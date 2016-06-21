@@ -1,16 +1,16 @@
 # pam-cookbook
 
-Manages PAM services in /etc/pam.d
+Manages PAM services in `/etc/pam.d`
 
 ## Limitations
 
 This cookbook will not set up PAM if you do not already have it installed.  It will only modify an existing configuration.
 
-Also, currently it only includes defaults for /etc/pam.d/su.  If you want to override any other PAM services, you will first need to transcribe the entire service configuration into the appropriate node attibute, otherwise the PAM file will be overwritten *with only the attributes you configure* (and your system will become unusable).
+Also, currently it only includes defaults for `/etc/pam.d/su`.  If you want to override any other PAM services, you will first need to transcribe the entire service configuration into the appropriate node attibute, otherwise the PAM file will be overwritten *with only the attributes you configure* (and your system will become unusable).
 
 ## Supported Platforms
 
-This cookbook _should_ work fine on Red Hat systems, however it has only been tested on *Ubuntu 12.04*.
+This cookbook _should_ work fine on Red Hat systems, however it has only been tested on *Ubuntu 12.04* & *14.04*.
 
 ## Attributes
 - `node['pam_d']['services']` - Example:
