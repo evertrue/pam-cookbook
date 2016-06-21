@@ -1,5 +1,7 @@
 # pam-cookbook
 
+[![Cookbook Version](https://img.shields.io/cookbook/v/pam.svg)](https://supermarket.chef.io/cookbooks/pam)
+
 Manages PAM services in `/etc/pam.d`
 
 ## Limitations
