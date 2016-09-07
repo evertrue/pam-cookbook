@@ -12,7 +12,7 @@ Also, currently it only includes defaults for `/etc/pam.d/su`.  If you want to o
 
 ## Supported Platforms
 
-This cookbook _should_ work fine on Red Hat systems, however it has only been tested on *Ubuntu 12.04* & *14.04*.
+This cookbook only contains templates to work for Ubuntu, however adding CentOS/RedHat templates should be a trivial matter if someone is interested in [submitting a pull request](https://github.com/evertrue/pam-cookbook/pull/new/master).
 
 ## Attributes
 - `node['pam_d']['services']` - Example:
