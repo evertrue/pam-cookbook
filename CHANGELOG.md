@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.0.3
+
+* Gracefully handle when no services are defined
+
 ## v1.0.2
 
 * Avoid requiring `includes` (#1)
