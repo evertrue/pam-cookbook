@@ -13,6 +13,13 @@ platforms:
   # - name: centos-6.4
 
 suites:
-  - name: default
+  - name: ubuntu
     run_list:
       - recipe[pam_test::default]
+    includes:
+      - ubuntu-14.04
+  - name: centos
+    run_list:
+      - recipe[pam_test::default]
+    includes:
+      - centos-7.2
