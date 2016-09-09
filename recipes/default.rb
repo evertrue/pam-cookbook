@@ -19,12 +19,16 @@
 
 Chef::Log.info "Services: #{node['pam_d'].inspect}"
 
-node['pam_d']['services'].each do |service, conf|
-  template "/etc/pam.d/#{service}" do
-    source 'service.erb'
-    variables(
-      conf_lines: conf['main'],
-      includes: conf['includes']
-    )
+if node['pam_d']['services']
+  node['pam_d']['services'].each do |service, conf|
+    template "/etc/pam.d/#{service}" do
+      source 'service.erb'
+      variables(
+        conf_lines: conf['main'],
+        includes: conf['includes']
+      )
+    end
   end
+else
+  Chef::Log.warn 'No pam services have been defined'
 end
