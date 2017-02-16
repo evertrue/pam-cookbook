@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Unreleased
+
+* Add `priority` key to order modules within service
+
 ## v1.0.3
 
 * Gracefully handle when no services are defined
