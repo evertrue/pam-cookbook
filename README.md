@@ -26,7 +26,8 @@ This cookbook _should_ work fine on Red Hat systems, however it has only been te
           'control_flag' => 'required',
           'name' => 'pam_env.so',
           'args' => 'readenv=1',
-          'disabled' => false
+          'disabled' => false,
+          'priority' => 10,
         }
       },
       'includes' => %w(
@@ -37,6 +38,8 @@ This cookbook _should_ work fine on Red Hat systems, however it has only been te
   ```
 
 *NOTE:* `pam_env` in this case is just a placeholder so that we can use a keyed hash instead of an array.  `disabled` is optional but if it is present and set to true, it will prevent the entry from showing up in the PAM service file.
+
+Line ordering within the service can be achieved by setting the `priority` key, lower numbers coming first. If `priority` is unset, then it is considered to be `9999` and will be at the mercy of node attribute ordering.
 
 ## Usage
 
