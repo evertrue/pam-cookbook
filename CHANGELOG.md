@@ -1,8 +1,10 @@
 # CHANGELOG
 
-## Unreleased
+## v1.1.0
 
-* Add `priority` key to order modules within service
+* Add `pam_limits` for Debian systems to defaults (#4)
+* Add `priority` key to order modules within service (#6)
+* Refactor testing & clean up lint/style/syntax (#7)
 
 ## v1.0.3
 
