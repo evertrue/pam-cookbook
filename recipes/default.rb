@@ -21,9 +21,9 @@ Chef::Log.info "Services: #{node['pam_d'].inspect}"
 
 if node['pam_d']['services']
   node['pam_d']['services'].each do |service, conf|
-    main = conf['main'].to_hash.sort_by { |conf_name, attribs|
+    main = conf['main'].to_hash.sort_by do |_conf_name, attribs|
       attribs.fetch('priority', 9999)
-    }
+    end
 
     template "/etc/pam.d/#{service}" do
       source 'service.erb'
