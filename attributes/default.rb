@@ -24,7 +24,12 @@ default['pam_d']['services'] = value_for_platform_family(
           'control_flag' => 'optional',
           'name' => 'pam_mail.so',
           'args' => 'nopen'
-        }
+        },
+        'pam_limits' => {
+          'interface' => 'session',
+          'control_flag' => 'required',
+          'name' => 'pam_limits.so',
+        },
       },
       'includes' => %w(
         common-auth
