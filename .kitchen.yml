@@ -1,25 +1,47 @@
 ---
 driver:
-  name: vagrant
-  customize:
-    cpus: 4
-    memory: 1536
+  name: dokken
+  privileged: true  # because Docker and SystemD/Upstart
+  chef_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+
+transport:
+  name: dokken
 
 provisioner:
-  name: chef_zero
+  name: dokken
+
+verifier:
+  name: inspec
+  deprecations_as_errors: true
 
 platforms:
+  - name: centos-7
+    driver:
+      image: dokken/centos-7
+      pid_one_command: /usr/lib/systemd/systemd
+
   - name: ubuntu-14.04
-  - name: centos-7.2
+    driver:
+      image: dokken/ubuntu-14.04
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+  - name: ubuntu-16.04
+    driver:
+      image: dokken/ubuntu-16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
 
 suites:
-  - name: ubuntu
+  - name: default
     run_list:
       - recipe[pam_test::default]
-    includes:
-      - ubuntu-14.04
-  - name: centos
+
+  - name: chef12
     run_list:
       - recipe[pam_test::default]
-    includes:
-      - centos-7.2
+    driver:
+      chef_version: 12
+    includes: ubuntu-16.04

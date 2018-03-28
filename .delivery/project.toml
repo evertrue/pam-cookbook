@@ -1,0 +1,9 @@
+[local_phases]
+unit = "rspec spec/"
+lint = "cookstyle --display-cop-names --extra-details"
+syntax = "foodcritic ."
+provision = "kitchen create"
+deploy = "kitchen converge"
+smoke = "kitchen verify"
+functional = "echo skipping"
+cleanup = "kitchen destroy"
