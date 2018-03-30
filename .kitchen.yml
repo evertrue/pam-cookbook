@@ -45,3 +45,10 @@ suites:
     driver:
       chef_version: 12
     includes: ubuntu-16.04
+
+  - name: chef-current
+    run_list:
+      - recipe[pam_test::default]
+    driver:
+      chef_version: current
+    includes: ubuntu-16.04
