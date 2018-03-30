@@ -10,6 +10,5 @@ chef_version     '>= 12.1'
 issues_url 'https://github.com/evertrue/pam-cookbook/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/evertrue/pam-cookbook' if respond_to?(:source_url)
 
-supports 'ubuntu', '~> 14.04'
-supports 'ubuntu', '~> 16.04'
+supports 'ubuntu', '>= 14.04'
 supports 'centos', '~> 7.0'
